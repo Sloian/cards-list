@@ -1,7 +1,6 @@
-import CardsList from './cards-list.js';
-import Pagination from './pagination.js';
+import CardsList from 'cards-list.js';
+import Pagination from 'pagination.js';
 
-// /products?_page=${page}&_limit=9'
 const BACKEND_URL = 'https://online-store.bootcamp.place/api/';
 export default class OnlineStorePage {
   constructor () {
