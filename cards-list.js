@@ -1,4 +1,4 @@
-import Card from "card.js";
+import Card from "./card.js";
 
 export default class CardsList {
   constructor (data = []) {
@@ -11,7 +11,7 @@ export default class CardsList {
 
   getTemplate () {
     return `
-      <div>
+      <div class = 'os-container' >
         <div class ="os-product-list" data-element="body">
           <!--Card list-->
         </div>

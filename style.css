@@ -1,4 +1,8 @@
 @import url(https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css);
+/* montserrat-regular - latin */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
 
 /* Card style//////////////////*/
 html,
@@ -7,6 +11,14 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
+}
+
+.os-container{
+  margin: 0 auto;
+  max-width: 1320px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
 }
 
 *, *::after, *::before {
@@ -54,23 +66,6 @@ body {
   font-weight: 400;
   max-width: 70px;
   padding: 6px 12px;
-}
-
-
-.bi-star::before {
-  content: "\f588";
-}
-
-.bi::before {
-  display: inline-block;
-  font-family: bootstrap-icons !important;
-  font-style: normal;
-  font-weight: normal !important;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  vertical-align: -0.125em;
-  -webkit-font-smoothing: antialiased;
 }
 
 .product-price{
@@ -148,6 +143,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 25px;
   }
   
   .os-pagination .previous{
@@ -184,5 +180,85 @@ body {
   .os-pagination .next {
     margin-left: 15px;
   }
+
+  /* Header////////////////////////// */
+
+  .os-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
   
+  .os-logo-text{
+    font-family: Montserrat, serif;
+    font-size: 2.5rem;
+    color: #7e72f2;;
+    font-weight: 600;
+  }
+
+  .os-btn-primary{
+    width: 120px;
+    height: 36px;
+    background-color: #7e72f2;;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .os-btn-primary:hover{
+    background-color: #5140e7;
+    transition: background-color, 0.7s;
+  }
+
+
   
+
+
+  
+/* Search///////////////////////////////*/
+
+.os-form-input{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px;
+}
+
+.os-form-input>input{
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 15);
+  width: 100%;
+  padding: 15px 18px;
+  font-family: Montserrat,sans-serif;
+  font-size: 1.2rem;
+}
+
+.os-form-input.use-icon {
+  position: relative;
+}
+
+.os-form-input.use-icon .input-icon{
+  align-items: center;
+  color: #606060;
+  display: flex;
+  font-size: 1.375rem;
+  height: 100%;
+  position: absolute;
+  right: 40px;
+  top: 0;
+}
+
+.style-search{
+  border: none;
+  outline: none;
+  font-family: Montserrat,sans-serif;
+  font-size: 1.2rem;
+}
+/* 
+.os-form-input.use-icon>input {
+  padding-right: 70px;
+} */
+
+

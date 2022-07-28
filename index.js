@@ -1,5 +1,6 @@
-import CardsList from 'cards-list.js';
-import Pagination from 'pagination.js';
+import CardsList from './cards-list.js';
+import Pagination from './pagination.js';
+import Search from './search.js';
 
 const BACKEND_URL = 'https://online-store.bootcamp.place/api/';
 export default class OnlineStorePage {
@@ -35,12 +36,32 @@ export default class OnlineStorePage {
 
   getTemplate () {
     return `
-      <div>
-        <div data-element="cardList">
-          <!-- Cards List component -->
+      <div class = 'os-container'>
+        <div class = 'os-header'>
+          <div class = 'os-logo-text'>Online Store</div>
+          <button class = 'cart os-btn-primary'>
+          <i class="bi bi-cart"></i>
+          CART
+          </button>
         </div>
-        <div data-element="pagination">
-          <!-- Pagination component -->
+        <div class = 'os-products'>
+          <div data-element = 'side-bar'>
+            <!-- Side Bar Component -->
+          </div>
+
+          <section>
+            <div data-element = 'search'>
+              <!-- Search -->
+            </div>
+            <div data-element="cardList">
+              <!-- Cards List component -->
+            </div>
+            <div data-element="pagination">
+              <!-- Pagination component -->
+            </div>
+          </section>
+
+          
         </div>
       </div>
     `;
@@ -55,16 +76,20 @@ export default class OnlineStorePage {
       activePageIndex: 0,
       totalPages
     })
+    const search = new Search();
 
+    this.components.search = search;
     this.components.cardList = cardList;
     this.components.pagination = pagination;
   }
 
   renderComponents () {
 
+    const searchContainer = this.element.querySelector('[data-element="search"]')
     const cardsContainer = this.element.querySelector('[data-element="cardList"]');
     const paginationContainer = this.element.querySelector('[data-element="pagination"]');
 
+    searchContainer.append(this.components.search.element);
     cardsContainer.append(this.components.cardList.element);
     paginationContainer.append(this.components.pagination.element);
 
@@ -80,20 +105,11 @@ export default class OnlineStorePage {
 
     this.components.pagination.element.addEventListener('page-changed', event => {
       const pageIndex = event.detail;
-
-
-    //   // [0, 1, 2] | pageIndex = 0 pageSize = 3
-    //   // [3, 4, 5] | pageIndex = 1 pageSize = 3
-    //   // [6, 7]    | pageIndex = 2 pageSize = 3
       this.update(pageIndex + 1);
     });
   }
 
   async update(pageNumber){
-
-    // const start = pageIndex * this.pageSize;
-    // const end = start + this.pageSize;
-    // const data = this.products.slice(start, end);
 
     const data = await this.loadData(pageNumber);
 
